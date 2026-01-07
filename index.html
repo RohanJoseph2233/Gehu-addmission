@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gehu
+    </title>
+      <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Responsive Header Component -->
+<header class="bg-blue-900 sticky top-0 z-50 shadow">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex justify-center items-center">
+    <!-- Logo -->
+    <img src="Images /gehu-logo.svg" alt="Graphic Era Hill University Logo" class="h-14 object-contain">
+  </div>
+</header>
+
+
+
+<section class="relative min-h-screen flex items-center overflow-hidden">
+  <div id="hero-slider" class="absolute inset-0 z-0">
+    <div class="hero-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image:url('Images\ /hero.jpg');"></div>
+    <div class="hero-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image:url('Images\ /hero2.jpeg');"></div>
+    <div class="hero-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image:url('Images\ /hero3.jpg');"></div>
+    
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/60 to-blue-900/40 z-10"></div>
+  </div>
+
+  <div class="relative z-20 max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div class="text-white space-y-6 text-center lg:text-left">
+      <h1 class="text-4xl text-yellow-400 md:text-5xl xl:text-6xl font-extrabold">
+         Admissions <br />  <span class="text-white"> Open 2026 </span>
+      </h1>
+      <p class="text-lg max-w-xl mx-auto lg:mx-0">
+        Begin your career at the university ranked
+        <span class="font-bold underline decoration-yellow-400">
+          48 amongst top universities of India by NIRF 2025
+        </span>
+      </p>
+
+      <div class="flex flex-row justify-center lg:justify-start gap-2 pt-4">
+        <div class="flex-1 max-w-[120px] bg-white/10 backdrop-blur-md text-white rounded-xl p-2 border border-white/20 flex flex-col items-center gap-1 group hover:bg-white hover:text-blue-900 transition-all duration-300 cursor-pointer">
+          
+          <div class="text-center">
+            <h4 class="font-bold text-[10px]">GEHU</h4>
+            <p class="text-xl font-medium opacity-80">Dehradun</p>
+          </div>
+        </div>
+
+        <div class="flex-1 max-w-[120px] bg-white/10 backdrop-blur-md text-white rounded-xl p-2 border border-white/20 flex flex-col items-center gap-1 group hover:bg-white hover:text-blue-900 transition-all duration-300 cursor-pointer">
+          
+          <div class="text-center">
+            <h4 class="font-bold text-[10px]">GEHU</h4>
+            <p class="text-xl font-medium opacity-80">Bhimtal</p>
+          </div>
+        </div>
+
+        <div class="flex-1 max-w-[120px] bg-white/10 backdrop-blur-md text-white rounded-xl p-2 border border-white/20 flex flex-col items-center gap-1 group hover:bg-white hover:text-blue-900 transition-all duration-300 cursor-pointer">
+         
+          <div class="text-center">
+            <h4 class="font-bold text-[10px]">GEHU</h4>
+            <p class="text-xl font-medium opacity-80">Nainital</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full flex justify-center">
+      <div class="w-full max-w-[360px]">
+        <h2 class="text-center text-white text-2xl font-bold mb-4">Apply Now</h2>
+        <div class="bg-white rounded-xl shadow-xl px-5 py-5 max-w-xs mx-auto">
+          <form id="leadForm" class="space-y-3" novalidate>
+            <div>
+              <label class="block text-gray-900 font-semibold text-[10px] mb-1">Full Name</label>
+              <input id="name" type="text" placeholder="Your Name" oninput="this.value = this.value.replace(/[0-9]/g, '')" class="w-full h-8 px-3 rounded-md border border-gray-200 text-xs focus:outline-none focus:border-blue-500" />
+              <p id="nameError" class="text-[9px] text-red-500 mt-0.5 hidden"></p>
+            </div>
+
+            <div>
+              <label class="block text-gray-900 font-semibold text-[10px] mb-1">Email</label>
+              <input id="email" type="email" placeholder="Your Email" class="w-full h-8 px-3 rounded-md border border-gray-200 text-xs focus:outline-none focus:border-blue-500" />
+              <p id="emailError" class="text-[9px] text-red-500 mt-0.5 hidden"></p>
+            </div>
+
+            <div>
+              <label class="block text-gray-900 font-semibold text-[10px] mb-1">Phone Number</label>
+              <div class="flex gap-1">
+                <input id="phone" type="tel" maxlength="10" placeholder="Number" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="flex-1 h-8 px-3 rounded-md border border-gray-200 text-xs focus:outline-none focus:border-blue-500" />
+                <button type="button" id="sendOtpBtn" class="h-8 px-2 rounded-md text-white text-[10px] font-semibold bg-gradient-to-r from-blue-600 to-yellow-400">Verify</button>
+              </div>
+              <p id="phoneError" class="text-[9px] text-red-500 mt-0.5 hidden"></p>
+              <p id="mainOtpStatus" class="text-[9px] mt-0.5 hidden"></p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-gray-900 font-semibold text-[10px] mb-1">State</label>
+                <select id="state" class="w-full h-8 px-2 rounded-md border border-gray-200 text-[10px] focus:outline-none">
+                  <option value="">Select</option>
+                </select>
+                <p id="stateError" class="text-[9px] text-red-500 mt-0.5 hidden">Required</p>
+              </div>
+              <div>
+                <label class="block text-gray-900 font-semibold text-[10px] mb-1">City</label>
+                <select id="city" class="w-full h-8 px-2 rounded-md border border-gray-200 text-[10px] focus:outline-none">
+                  <option value="">Select</option>
+                </select>
+                <p id="cityError" class="text-[9px] text-red-500 mt-0.5 hidden">Required</p>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-gray-900 font-semibold text-[10px] mb-1">Campus</label>
+              <select id="campus" class="w-full h-8 px-3 rounded-md border border-gray-200 text-xs focus:outline-none">
+                <option value="">Select Campus</option>
+                <option value="GEHU Dehradun">GEHU Dehradun</option>
+                <option value="GEHU Bhimtal">GEHU Bhimtal</option>
+                <option value="GEHU Nainital">GEHU Nainital</option>
+              </select>
+              <p id="campusError" class="text-[9px] text-red-500 mt-0.5 hidden">Select Campus</p>
+            </div>
+
+            <div>
+              <label class="block text-gray-900 font-semibold text-[10px] mb-1">Course</label>
+              <select id="course" class="w-full h-8 px-3 rounded-md border border-gray-200 text-xs focus:outline-none">
+                <option value="">Select Course</option>
+              </select>
+              <p id="courseError" class="text-[9px] text-red-500 mt-0.5 hidden">Select Course</p>
+            </div>
+
+            <div class="flex gap-2 text-[9px] text-gray-700 font-bold leading-tight">
+              <input type="checkbox" id="consent" class="mt-0.5" />
+              <label for="consent">I authorize Graphic Era to contact me.</label>
+            </div>
+            <p id="consentError" class="text-[9px] text-red-500 hidden"></p>
+
+            <button type="submit" class="w-full h-9 rounded-md text-white text-xs font-semibold bg-gradient-to-r from-blue-600 to-yellow-400 uppercase tracking-wider hover:opacity-90">Submit Application</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="otpModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[100] px-4">
+  <div class="bg-white rounded-xl p-6 w-full max-w-[320px] relative shadow-2xl">
+    <button id="closeOtp" class="absolute top-2 right-4 text-2xl text-gray-400 hover:text-gray-600">&times;</button>
+    <h3 class="text-base font-bold text-gray-900 mb-1">Verify Phone Number</h3>
+    <p class="text-[11px] text-gray-500 mb-4">OTP sent to <span id="displayPhone" class="font-bold text-gray-700"></span></p>
+    <div class="mb-4">
+      <input id="modalOtpInput" type="text" maxlength="6" placeholder="_ _ _ _ _ _" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="w-full h-10 px-3 border-2 border-blue-500 rounded-md text-center text-lg font-bold tracking-[0.5em] focus:outline-none">
+      <p id="modalOtpMsg" class="text-[10px] mt-2 hidden text-center"></p>
+    </div>
+    <div class="flex gap-3 mb-4">
+      <button id="verifyOtpBtn" class="flex-1 h-10 rounded-md text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-yellow-400">Verify</button>
+      <button id="cancelOtpBtn" class="flex-1 h-10 rounded-md border border-gray-300 text-xs font-bold text-gray-600">Cancel</button>
+    </div>
+    <div class="text-center">
+      <button id="resendBtn" disabled class="text-[11px] font-bold text-blue-600 disabled:text-gray-400 underline">Resend OTP</button>
+      <span id="resendTimer" class="text-[11px] text-gray-500 ml-1"></span>
+    </div>
+  </div>
+</div>
+<script src="scripts/hero-form.js"></script>
+
+<section class="w-full bg-gray-50 py-16 overflow-hidden">
+  <div class="max-w-6xl mx-auto text-center mb-8 px-4">
+    <h2 class="text-4xl md:text-5xl font-black text-yellow-400">
+      Explore Our <span class="text-blue-600">Programs</span>
+    </h2>
+  </div>
+
+  <div class="max-w-6xl mx-auto mb-12 px-4 space-y-6">
+    <div class="flex flex-col md:flex-row gap-4 items-center bg-white shadow-xl rounded-2xl p-2 border border-gray-100">
+      
+      <div class="flex-1 flex items-center gap-3 px-4 w-full">
+        <span class="text-gray-400">🔍</span>
+        <input id="searchInput" type="text" placeholder="Search courses, eligibility, skills..." class="w-full py-3 bg-transparent focus:outline-none text-gray-700" />
+      </div>
+      
+      <div class="block md:hidden w-[90%] h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mx-auto"></div>
+
+      <div class="hidden md:block w-px h-8 bg-gray-200"></div>
+
+      <div class="relative w-full md:w-64 px-2">
+        <select id="campusFilterDropdown" class="w-full py-3 bg-transparent focus:outline-none text-gray-600 font-bold appearance-none cursor-pointer">
+          <option value="all">All Campuses</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-gray-400">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+
+      <button id="clearSearchBtn" class="w-full md:w-auto px-8 py-3 rounded-xl text-white font-bold bg-gradient-to-r from-blue-600 to-yellow-400 hover:shadow-lg transition-all active:scale-95">Clear</button>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3" id="levelFilters">
+      <button data-category="all" class="filter-btn active px-6 py-2 rounded-full border-2 border-transparent text-white font-bold transition-all">All Programs</button>
+      <button data-category="UG" class="filter-btn px-6 py-2 rounded-full border-2 border-gray-200 text-gray-600 hover:text-blue-600 font-bold transition-all">Under Graduate</button>
+      <button data-category="PG" class="filter-btn px-6 py-2 rounded-full border-2 border-gray-200 text-gray-600 hover:text-blue-600 font-bold transition-all">Post Graduate</button>
+      <button data-category="Diploma" class="filter-btn px-6 py-2 rounded-full border-2 border-gray-200 text-gray-600 hover:text-blue-600 font-bold transition-all">Diploma</button>
+    </div>
+  </div>
+
+  <div id="scrollWrapper" class="max-w-full px-4 py-8 overflow-x-auto cursor-grab active:cursor-grabbing scroll-smooth scrollbar-hide">
+    <div id="scrollTrack" class="grid grid-rows-1 sm:grid-rows-2 grid-flow-col auto-cols-[340px] gap-8 items-start transition-transform duration-700 ease-out">
+      </div>
+  </div>
+</section>
+
+<style>
+  .bg-primary-gradient {
+    background-image: linear-gradient(to right, #2563eb, #fbbf24);
+  }
+
+  .filter-btn.active { 
+    background-image: linear-gradient(to right, #2563eb, #fbbf24); 
+    color: white; 
+    border-color: transparent; 
+    box-shadow: 0 4px 10px -2px rgba(37, 99, 235, 0.3);
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .course-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .course-content.expanded { max-height: 800px; }
+</style>
+
+<script src="scripts/programs.js"></script>
+
+
+<section class="py-20 bg-gradient-to-r from-blue-50 via-white to-yellow-50">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Heading -->
+    <h2 class="text-center text-4xl md:text-5xl font-extrabold mb-14">
+      <span class="text-blue-700">Scholarship</span>
+      <span class="text-yellow-500">Highlights</span>
+    </h2>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Card 1 -->
+      <div
+        class="bg-white rounded-2xl p-10 text-center shadow-lg border-t-8 border-yellow-500
+               transform transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
+      >
+        <h3 class="text-5xl font-extrabold text-yellow-700 mb-4">70%</h3>
+        <h4 class="text-lg font-semibold mb-2">Merit Based Scholarships</h4>
+        <p class="text-gray-600 text-sm">
+          Awarded to high-performing students across programs.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div
+        class="bg-white rounded-2xl p-10 text-center shadow-lg border-t-8 border-blue-500
+               transform transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
+      >
+        <h3 class="text-5xl font-extrabold text-blue-600 mb-4">10%</h3>
+        <h4 class="text-lg font-semibold mb-2">For Female Candidates</h4>
+        <p class="text-gray-600 text-sm">
+          Additional support to empower women in higher education.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div
+        class="bg-white rounded-2xl p-10 text-center shadow-lg border-t-8 border-blue-400
+               transform transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
+      >
+        <h3 class="text-5xl font-extrabold text-blue-700 mb-4">25%</h3>
+        <h4 class="text-lg font-semibold mb-2">For the Uttarakhand Students</h4>
+        <p class="text-gray-600 text-sm">
+          Special scholarships for students of Uttarakhand to support academic excellence and future success.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="relative bg-white py-20 px-6 overflow-hidden">
+  
+  <div class="absolute top-0 left-0 w-64 h-64 bg-blue-50 rounded-full -translate-x-1/2 -translate-y-1/2 opacity-50"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-yellow-50 rounded-full translate-x-1/3 translate-y-1/3 opacity-50"></div>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+
+    <div class="lg:col-span-8 z-10">
+      <div class="text-center lg:text-left mb-12">
+        <h2 class="text-4xl md:text-5xl font-black mb-4">
+          Why <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500">Graphic Era?</span>
+        </h2>
+        <div class="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100">
+           <p class="text-blue-700 font-bold text-sm md:text-base uppercase tracking-wider">
+            Value Driven Return on Investment
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="group p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-blue-200">
+            <span class="text-white font-bold text-xl">₹</span>
+          </div>
+          <h4 class="font-bold text-blue-900 text-lg mb-2">View of Pure ROI</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">Among the top B-schools in India offering premium education at a modest fee structure.</p>
+        </div>
+
+        <div class="group p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-blue-200">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          </div>
+          <h4 class="font-bold text-blue-900 text-lg mb-2">Experienced Faculty</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">Exceptional blend of academic scholars and industry professionals from across the globe.</p>
+        </div>
+
+        <div class="group p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-blue-200">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 21h6l-.75-4M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          </div>
+          <h4 class="font-bold text-blue-900 text-lg mb-2">Digital Smart Class</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">Advanced classrooms equipped with the latest collaborative technology for immersive learning.</p>
+        </div>
+
+        <div class="group p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-blue-200">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <h4 class="font-bold text-blue-900 text-lg mb-2">Startup Ecosystem</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">End-to-end mentoring, business incubation, and direct funding support for student entrepreneurs.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lg:col-span-4 relative">
+      <div class="sticky top-24 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-3xl p-8 shadow-2xl shadow-yellow-200 overflow-hidden transform lg:rotate-2">
+        
+        <div class="absolute top-0 right-0 opacity-10">
+          <svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="8" fill="none" /></svg>
+        </div>
+
+        <h3 class="font-black text-blue-900 mb-8 text-2xl leading-tight">
+          A Campus Designed<br />for Your Future
+        </h3>
+
+        <ul class="space-y-5">
+          <li class="flex items-center gap-4 group">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-white text-xs group-hover:scale-110 transition-transform">✓</div>
+            <div>
+              <p class="font-bold text-blue-900 text-sm">Eco-friendly Campus</p>
+              <p class="text-blue-800 text-[12px] opacity-80 leading-tight">Nestled in hills & natural beauty.</p>
+            </div>
+          </li>
+          <li class="flex items-center gap-4 group">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-white text-xs group-hover:scale-110 transition-transform">✓</div>
+            <div>
+              <p class="font-bold text-blue-900 text-sm">Premium Hostels</p>
+              <p class="text-blue-800 text-[12px] opacity-80 leading-tight">Safe, spacious home for girls & boys.</p>
+            </div>
+          </li>
+          <li class="flex items-center gap-4 group">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-white text-xs group-hover:scale-110 transition-transform">✓</div>
+            <div>
+              <p class="font-bold text-blue-900 text-sm">Full Transport</p>
+              <p class="text-blue-800 text-[12px] opacity-80 leading-tight">University buses across city points.</p>
+            </div>
+          </li>
+          <li class="flex items-center gap-4 group">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-white text-xs group-hover:scale-110 transition-transform">✓</div>
+            <div>
+              <p class="font-bold text-blue-900 text-sm">Lifestyle & Leisure</p>
+              <p class="text-blue-800 text-[12px] opacity-80 leading-tight">Lively cafes & vibrant art culture.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-10">
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-full py-4 bg-blue-900 text-white font-bold rounded-2xl shadow-lg hover:bg-blue-800 transition-colors uppercase tracking-widest text-xs">
+            Apply For 2026 Session
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= TOP HEADING ================= -->
+<section class="max-w-7xl mx-auto px-4 pt-16 pb-10 text-center">
+
+  <!-- PILL -->
+  <span class="inline-block bg-blue-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
+    SCHOLARSHIP ENTRANCE TEST 2026
+  </span>
+
+  <!-- MAIN HEADING -->
+  <h1 class="text-3xl md:text-4xl font-extrabold mb-4">
+    GECET - Graphic Era Common Entrance Test
+  </h1>
+
+  <!-- SUBTITLE -->
+  <p class="text-gray-600 max-w-3xl mx-auto text-base md:text-lg">
+    An initiative to identify exceptional talent and provide scholarships up to
+    <span class="font-semibold text-gray-900">₹100 Crores</span>
+  </p>
+
+</section>
+
+
+
+
+<!-- ================= GECET COMPONENT ================= -->
+<section class="max-w-7xl mx-auto px-4 pb-16">
+
+  <!-- BLUE STRIP -->
+  <div class="bg-blue-600 text-white text-center py-3 rounded-lg mb-8 text-sm font-semibold">
+    Fostering excellence in education and research across Uttarakhand
+  </div>
+
+  <div class="bg-white rounded-2xl shadow-lg p-8 grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+    <!-- LEFT -->
+    <div>
+
+      <!-- SCHOLARSHIP CARD -->
+      <div class="border-2 rounded-xl p-6 bg-yellow-50 mb-8">
+        <p class="text-sm text-gray-700 font-medium mb-2">
+          Unlock Scholarships worth
+        </p>
+        <h2 class="text-4xl font-extrabold text-gray-900">
+          ₹100 <span class="text-2xl font-bold">CRORES</span>
+        </h2>
+        <div class="h-1 w-full bg-yellow-400 mt-4 rounded"></div>
+      </div>
+
+      <!-- KEY BENEFITS -->
+      <h3 class="font-bold text-lg mb-4">Key Benefits</h3>
+
+      <div class="space-y-4">
+        <div class="flex gap-3 p-4 border rounded-xl">
+          🎓
+          <div>
+            <p class="font-semibold">Up to 100% Tuition Fee Waiver</p>
+            <p class="text-sm text-gray-600">Based on GECET performance</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 p-4 border rounded-xl">
+          ✅
+          <div>
+            <p class="font-semibold">Merit-Based Selection Process</p>
+            <p class="text-sm text-gray-600">Fair and transparent evaluation</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 p-4 border rounded-xl">
+          ⭐
+          <div>
+            <p class="font-semibold">Guaranteed Admission for Toppers</p>
+            <p class="text-sm text-gray-600">Secure your seat at top programs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+
+      <!-- ABOUT -->
+      <h3 class="font-bold text-lg mb-3">About GECET</h3>
+      <p class="text-gray-700 text-sm leading-relaxed mb-6">
+        The Graphic Era Common Entrance Test (GECET) is an initiative by the
+        Graphic Era Group of Institutions. Located in Dehradun, Bhimtal and
+        Haldwani, Uttarakhand, these prestigious institutions are dedicated to
+        fostering excellence in education and research.
+      </p>
+
+      <!-- QUICK FACTS -->
+      <h3 class="font-bold text-lg mb-4">Quick Facts</h3>
+
+      <div class="grid grid-cols-2 gap-4 mb-8">
+        <div class="border rounded-xl p-4">
+          <p class="font-semibold">🌍 Coverage</p>
+          <p class="text-sm text-gray-600">All India Exam</p>
+        </div>
+
+        <div class="border rounded-xl p-4">
+          <p class="font-semibold">📚 Programs</p>
+          <p class="text-sm text-gray-600">Multiple Options</p>
+        </div>
+
+        <div class="border rounded-xl p-4">
+          <p class="font-semibold">📅 Launched</p>
+          <p class="text-sm text-gray-600">2024</p>
+        </div>
+
+        <div class="border rounded-xl p-4">
+          <p class="font-semibold">🛡️ Evaluation</p>
+          <p class="text-sm text-gray-600">Fair Process</p>
+        </div>
+      </div>
+
+      <!-- BUTTONS -->
+      <button
+        onclick="scrollToTop()"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg mb-4 transition">
+        Apply for GECET Now →
+      </button>
+
+      <button
+        class="w-full border-2 border-blue-600 text-blue-600 font-semibold py-3 rounded-lg hover:bg-blue-50 transition">
+        Explore Programs ↓
+      </button>
+
+    </div>
+  </div>
+  
+
+  <!-- FOOTER -->
+  <p class="text-center text-sm text-gray-500 mt-6">
+    Locations: Dehradun • Bhimtal • Haldwani, Uttarakhand |
+    Institution: Graphic Era Group of Institutions
+  </p>
+
+</section>
+
+
+<section class="w-full px-4 md:px-12 py-20 bg-white">
+    <h2 class="text-4xl md:text-5xl font-black text-center text-slate-800 mb-16 animate__animated animate__fadeIn">
+        Application Process
+    </h2>
+
+    <div class="max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div class="p-8 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all border border-gray-50 group animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform">1</div>
+            <h3 class="text-xl font-extrabold text-gray-900 mb-3">Choose your Course of Interest</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Consider your aptitude and interests to find the right fit for your career journey.</p>
+        </div>
+
+        <div class="p-8 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all border border-gray-50 group animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform">2</div>
+            <h3 class="text-xl font-extrabold text-gray-900 mb-3">Start your Online Application</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Begin online for a tracked, paperless admissions experience. You can also start at our campus centers.</p>
+        </div>
+
+        <div class="p-8 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all border border-gray-50 group animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform">3</div>
+            <h3 class="text-xl font-extrabold text-gray-900 mb-3">Review The Submission</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Verify all fields and attachments carefully before finalizing your application to avoid any delays.</p>
+        </div>
+
+        <div class="p-8 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all border border-gray-50 group animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform">4</div>
+            <h3 class="text-xl font-extrabold text-gray-900 mb-3">Gather Necessary Documents</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Prepare certificates, transcripts, ID proof and other required documents for quick upload.</p>
+        </div>
+
+        <div class="p-8 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all border border-gray-50 group animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform">5</div>
+            <h3 class="text-xl font-extrabold text-gray-900 mb-3">Complete Application Fee</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Pay ₹1500 securely using UPI, card or netbanking to submit your application successfully.</p>
+        </div>
+
+        <div class="p-8 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all border border-gray-50 group animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform">6</div>
+            <h3 class="text-xl font-extrabold text-gray-900 mb-3">Finalize Admission</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Pay course fee after provisional allotment and receive your digital confirmation and joining details.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="placement-section" class="relative bg-slate-900 py-12 lg:py-24 px-4 md:px-6 overflow-hidden min-h-screen lg:min-h-[700px] flex items-center">
+  
+  <div class="absolute top-0 right-0 w-[300px] lg:w-[500px] h-[300px] lg:h-[500px] bg-blue-600/20 rounded-full blur-[80px] lg:blur-[120px] animate-pulse"></div>
+  <div class="absolute bottom-0 left-0 w-[200px] lg:w-[300px] h-[200px] lg:h-[300px] bg-yellow-500/10 rounded-full blur-[60px] lg:blur-[100px]"></div>
+
+  <div class="max-w-7xl mx-auto w-full relative z-10">
+    <div class="text-center mb-8 lg:hidden">
+        <h3 class="text-white text-3xl font-black tracking-tight">
+            Placement <span class="text-blue-400">Stories</span>
+        </h3>
+        <p class="text-slate-400 text-sm font-medium">Celebrating Excellence</p>
+    </div>
+
+    <div id="slide-container" class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center transition-all duration-700">
+      
+      <div class="lg:col-span-7 flex justify-center order-1 lg:order-none">
+        <div class="relative group">
+          <div class="relative w-[280px] h-[350px] md:w-[450px] md:h-[580px] bg-blue-800 rounded-[30px] lg:rounded-[40px] p-4 lg:p-6 shadow-2xl border border-white/10 overflow-hidden">
+            <div id="bg-shape" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-yellow-400 rounded-[50px] lg:rounded-[60px] rotate-12 transition-transform duration-1000"></div>
+            <img id="studentImage" src="" alt="Placement Student" 
+                 class="relative z-10 w-full h-full object-contain drop-shadow-2xl transition-all duration-500 transform group-hover:scale-105">
+            <div class="absolute bottom-6 right-6 w-10 h-10 lg:w-14 lg:h-14 bg-yellow-400 rounded-xl lg:rounded-2xl z-20 shadow-xl animate-bounce" style="animation-duration: 3s;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 flex flex-col justify-center lg:-ml-12 order-2 lg:order-none">
+        <div class="bg-white/95 backdrop-blur-md rounded-[30px] lg:rounded-[35px] p-6 lg:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative border border-white">
+          
+          <div class="hidden lg:block mb-8">
+            <h3 class="text-blue-900 text-4xl font-black tracking-tight leading-tight mb-2">
+               Placement <span class="text-blue-600">Stories</span>
+            </h3>
+            <p class="text-slate-500 font-medium">Celebrating excellence in career achievements.</p>
+          </div>
+
+          <div id="content-body" class="space-y-6 lg:space-y-8 text-center lg:text-left">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4 lg:pb-6 gap-2">
+              <div class="text-left">
+                <h4 id="studentName" class="text-blue-700 text-xl md:text-3xl font-bold italic truncate max-w-[150px] md:max-w-none">Loading...</h4>
+                <p class="text-slate-400 text-[9px] font-bold uppercase tracking-[0.1em] mt-1">Graphic Era Excellence</p>
+              </div>
+              <div class="bg-yellow-400 px-4 py-1.5 lg:px-6 lg:py-2.5 rounded-full shadow-lg shrink-0">
+                <span id="studentPackage" class="text-blue-900 font-black text-sm lg:text-lg whitespace-nowrap">---</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center pt-2">
+              <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Placed At</p>
+              <div class="h-16 lg:h-20 w-full flex items-center justify-center">
+                <img id="companyLogo" src="" alt="Company" class="max-h-full max-w-[180px] lg:max-w-[220px] object-contain transition-all duration-500 transform hover:scale-110">
+              </div>
+            </div>
+          </div>
+
+          <div id="dots" class="flex items-center justify-center lg:justify-start gap-3 mt-8 lg:mt-12"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<script src="Scripts/placementcard.js"></script>
+
+<section id="placement-stats" class="relative bg-white py-24 px-6 overflow-hidden">
+  
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
+    <div class="absolute top-10 left-10 w-72 h-72 bg-blue-50 rounded-full blur-3xl opacity-60"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-slate-50 rounded-full blur-3xl opacity-60"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-20">
+      <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+        Placement Milestones <span class="text-blue-600">'25-26</span>
+      </h2>
+      <p class="max-w-2xl mx-auto text-slate-500 text-lg leading-relaxed font-medium">
+        Empowering the next generation of leaders through world-class career opportunities and industry-ready training.
+      </p>
+      <div class="mt-8 inline-flex items-center gap-3 px-4 py-2 bg-slate-50 rounded-full border border-slate-100">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+        </span>
+        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Session Ongoing: Updated Nov 2025</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      
+      <div class="group relative bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col items-center text-center overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        
+        <p class="text-slate-400 font-bold text-[11px] uppercase tracking-[0.15em] mb-4 group-hover:text-blue-600 transition-colors">Highest Package</p>
+        <h3 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+          <span class="text-blue-600">₹</span><span class="counter" data-target="61.99" data-decimals="2">0</span><span class="text-2xl text-slate-400 ml-1">L</span>
+        </h3>
+      </div>
+
+      <div class="group relative bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col items-center text-center overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <p class="text-slate-400 font-bold text-[11px] uppercase tracking-[0.15em] mb-4 group-hover:text-blue-600 transition-colors">Total Offers</p>
+        <h3 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+          <span class="counter" data-target="2300">0</span><span class="text-2xl text-blue-600">+</span>
+        </h3>
+      </div>
+
+      <div class="group relative bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col items-center text-center overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <p class="text-slate-400 font-bold text-[11px] uppercase tracking-[0.15em] mb-4 group-hover:text-blue-600 transition-colors">Offers Above 40L</p>
+        <h3 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+          <span class="counter" data-target="10">0</span>
+        </h3>
+      </div>
+
+      <div class="group relative bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col items-center text-center overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <p class="text-slate-400 font-bold text-[11px] uppercase tracking-[0.15em] mb-4 group-hover:text-blue-600 transition-colors">Offers Above 30L</p>
+        <h3 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+          <span class="counter" data-target="18">0</span>
+        </h3>
+      </div>
+
+      <div class="group relative bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-100px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col items-center text-center overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <p class="text-slate-400 font-bold text-[11px] uppercase tracking-[0.15em] mb-4 group-hover:text-blue-600 transition-colors">Offers Above 15L</p>
+        <h3 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+          <span class="counter" data-target="33">0</span>
+        </h3>
+      </div>
+
+      <div class="group relative bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col items-center text-center overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <p class="text-slate-400 font-bold text-[11px] uppercase tracking-[0.15em] mb-4 group-hover:text-blue-600 transition-colors">Offers Above 9L</p>
+        <h3 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+          <span class="counter" data-target="123">0</span>
+        </h3>
+      </div>
+
+      <div class="group relative bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col items-center text-center overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <p class="text-slate-400 font-bold text-[11px] uppercase tracking-[0.15em] mb-4 group-hover:text-blue-600 transition-colors">Avg Package</p>
+        <h3 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+          <span class="counter" data-target="5.3" data-decimals="1">0</span><span class="text-2xl text-blue-600 ml-1">L+</span>
+        </h3>
+      </div>
+
+      <div class="group relative bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col items-center text-center overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <p class="text-slate-400 font-bold text-[11px] uppercase tracking-[0.15em] mb-4 group-hover:text-blue-600 transition-colors">Alumni Network</p>
+        <h3 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+          <span class="counter" data-target="70">0</span><span class="text-2xl text-blue-600 ml-1">K+</span>
+        </h3>
+      </div>
+
+    </div>
+
+    <p class="text-center text-[10px] text-slate-400 mt-16 max-w-2xl mx-auto italic tracking-wide">
+      *Combined statistics for all campuses. Data is subject to dynamic updates as the placement cycle progresses.
+    </p>
+  </div>
+</section>
+<script src="Scripts/placements.js"></script>
+
+
+<section class="relative bg-white py-24 overflow-hidden">
+  
+  <div class="max-w-7xl mx-auto px-6 text-center mb-16">
+    <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+      Global <span class="text-blue-600">Recruitment</span> Partners
+    </h2>
+    <div class="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-6"></div>
+    <p class="max-w-2xl mx-auto text-slate-500 text-lg font-medium leading-relaxed">
+      Our graduates are driving innovation at the world's most prestigious organizations.
+    </p>
+  </div>
+
+  <div class="relative flex overflow-x-hidden">
+    <div class="flex animate-marquee whitespace-nowrap py-4 items-center">
+      <div class="logo-card-new"><img src="Images /Adobe-logo.png" alt="Adobe"></div>
+      <div class="logo-card-new"><img src="Images /Amazon-Logo.png" alt="Amazon"></div>
+      <div class="logo-card-new"><img src="Images /American-Express-logo.png" alt="Amex"></div>
+      <div class="logo-card-new"><img src="Images /BNY_Mellon.png" alt="BNY"></div>
+      <div class="logo-card-new"><img src="Images /DESCO_Logo.png" alt="DE Shaw"></div>
+      <div class="logo-card-new"><img src="Images /Deutsche_Bank_logo.png" alt="DB"></div>
+      <div class="logo-card-new"><img src="Images /flipkart.png" alt="Flipkart"></div>
+      <div class="logo-card-new"><img src="Images /Goldman-Sachs-Logo.png" alt="Goldman"></div>
+      <div class="logo-card-new"><img src="Images /Google-logo.png" alt="Google"></div>
+      <div class="logo-card-new"><img src="Images /microsoft.png" alt="Microsoft"></div>
+      <div class="logo-card-new"><img src="Images /Adobe-logo.png" alt="Adobe"></div>
+      <div class="logo-card-new"><img src="Images /Amazon-Logo.png" alt="Amazon"></div>
+      <div class="logo-card-new"><img src="Images /American-Express-logo.png" alt="Amex"></div>
+      <div class="logo-card-new"><img src="Images /BNY_Mellon.png" alt="BNY"></div>
+    </div>
+  </div>
+
+  <div class="relative flex overflow-x-hidden mt-6">
+    <div class="flex animate-marquee-reverse whitespace-nowrap py-4 items-center">
+      <div class="logo-card-new"><img src="Images /informatica-logo.png" alt="Informatica"></div>
+      <div class="logo-card-new"><img src="Images /Morgan_Stanley_Logo.png" alt="Morgan Stanley"></div>
+      <div class="logo-card-new"><img src="Images /nasdaq.png" alt="Nasdaq"></div>
+      <div class="logo-card-new"><img src="Images /paypal.svg" alt="PayPal"></div>
+      <div class="logo-card-new"><img src="Images /uber.png" alt="Uber"></div>
+      <div class="logo-card-new"><img src="Images /Volvo-Logo.png" alt="Volvo"></div>
+      <div class="logo-card-new"><img src="Images /zsacler.png" alt="Zscaler"></div>
+      <div class="logo-card-new font-bold text-blue-600 bg-blue-50 border-blue-100">AND 200+ MORE</div>
+      <div class="logo-card-new"><img src="Images /informatica-logo.png" alt="Informatica"></div>
+      <div class="logo-card-new"><img src="Images /Morgan_Stanley_Logo.png" alt="Morgan Stanley"></div>
+      <div class="logo-card-new"><img src="Images /nasdaq.png" alt="Nasdaq"></div>
+      <div class="logo-card-new"><img src="Images /paypal.svg" alt="PayPal"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-card-new {
+    flex-shrink: 0;
+    width: 170px;
+    height: 90px;
+    margin: 0 12px;
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s ease;
+    cursor: default;
+  }
+
+  .logo-card-new img {
+    max-width: 100%;
+    max-height: 40px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: all 0.4s ease;
+  }
+
+  /* Color on Hover - No Pause */
+  .logo-card-new:hover {
+    transform: translateY(-5px);
+    border-color: #3b82f6;
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
+  }
+
+  .logo-card-new:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  /* Infinite Animation Speeds */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .animate-marquee {
+    animation: marquee 35s linear infinite;
+    display: flex;
+    width: max-content;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee-reverse 35s linear infinite;
+    display: flex;
+    width: max-content;
+  }
+
+  /* Ensure no stopping on hover */
+  .animate-marquee:hover, 
+  .animate-marquee-reverse:hover {
+    animation-play-state: running !important;
+  }
+</style>
+
+
+
+<section id="highlights-section" class="relative bg-slate-950 py-24 px-6 overflow-hidden">
+    
+    <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-600 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-yellow-500 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight animate__animated animate__fadeInDown">
+                Key <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Highlights</span>
+            </h2>
+            <div class="w-24 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div id="highlightsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
+            </div>
+    </div>
+</section>
+
+<style>
+    /* Prevent content jump when expanding */
+    .highlight-card {
+        height: 100%;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .highlight-card:hover {
+        transform: translateY(-15px);
+        border-color: rgba(59, 130, 246, 0.5);
+        box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .img-zoom-container {
+        position: relative;
+        height: 240px;
+        overflow: hidden;
+    }
+
+    .highlight-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+    }
+
+    .highlight-card:hover .highlight-img {
+        transform: scale(1.15);
+    }
+
+    /* Gradient Overlay on Image */
+    .img-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 60%, rgba(15, 23, 42, 0.9));
+    }
+
+    /* Custom line clamp with smooth transition */
+    .description-text {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: all 0.5s ease;
+    }
+
+    .clamped {
+        -webkit-line-clamp: 4;
+    }
+
+    /* Button Hover Effect */
+    .read-more-btn:hover .arrow-icon {
+        transform: translateX(5px);
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script src="Scripts/highlights.js"></script>
+
+
+
+
+<style>
+    /* Strict 4-line limit for collapsed state */
+    .line-clamp-4 {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+    }
+
+    /* Fixed height for images to keep cards aligned at the top */
+    .highlight-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .highlight-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+</style>
+
+<section id="accreditation-section" class="relative bg-[#fcfcfd] py-24 px-6 overflow-hidden">
+  
+  <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-50 -mr-32 -mt-32"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 bg-yellow-50 rounded-full blur-3xl opacity-50 -ml-32 -mb-32"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+        Accreditations & <span class="text-blue-600">Rankings</span>
+      </h2>
+      <div class="w-20 h-1.5 bg-yellow-400 mx-auto rounded-full"></div>
+    </div>
+
+    <div id="accreditationGrid" class="flex flex-col md:flex-row justify-center items-stretch gap-10 lg:gap-16">
+      </div>
+  </div>
+</section>
+
+<style>
+  .accred-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .accred-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Fixed Logo Wrapper */
+  .logo-wrapper {
+    position: relative;
+    width: 160px; /* Slightly larger to prevent clipping */
+    height: 160px;
+    margin: 0 auto 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    border: 2px solid #f1f5f9;
+    padding: 20px; /* Internal padding ensures logo doesn't touch the edges */
+    overflow: hidden;
+  }
+
+  /* Interaction Fix */
+  .accred-card:hover .logo-wrapper {
+    transform: scale(1.05);
+    border-color: #2563eb;
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+  }
+
+  /* Ensuring logo image is always fully visible */
+  .accred-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Keeps aspect ratio and fits within padding */
+    transition: all 0.4s ease;
+    display: block;
+  }
+
+  /* Optional: if you want the logo to turn white on hover, 
+     use this only if your logos are solid black icons. 
+     If they have colors (like AICTE), keep this commented out. */
+  /* .accred-card:hover .logo-wrapper { background: #2563eb; }
+  .accred-card:hover img { filter: brightness(0) invert(1); } 
+  */
+
+  .accred-card {
+    max-width: 480px;
+    cursor: default;
+  }
+</style>
+<script src="scripts/accreditations.js" defer></script>
+
+
+
+<section class="py-16 md:py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+    <!-- LEFT CONTENT -->
+    <div>
+      <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
+        Life at Graphic Era
+      </h2>
+
+      <p class="text-gray-600 text-lg leading-relaxed mb-8 max-w-xl">
+        More than just academics — it’s an experience. From vibrant hostels to
+        iconic academic blocks, from high-tech labs to a buzzing student
+        community, life at Graphic Era is about growth, energy, and memories
+        you’ll never forget.
+      </p>
+
+      <a
+        href="#"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white
+               bg-gradient-to-r from-blue-600 to-yellow-400 hover:opacity-90 transition">
+        Join Us for Admissions ’26
+      </a>
+    </div>
+
+    <!-- MAIN VIDEO -->
+    <div
+      class="video-card relative aspect-video rounded-2xl overflow-hidden shadow-xl cursor-pointer bg-black"
+      data-video="X6MCS7SmNO8"
+    >
+      <img
+        src="https://img.youtube.com/vi/X6MCS7SmNO8/hqdefault.jpg"
+        class="thumb absolute inset-0 w-full h-full object-cover z-10"
+      >
+
+      <iframe
+        class="preview absolute inset-0 w-full h-full hidden z-20"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+
+      <!-- PLAY BUTTON -->
+      <div class="play-btn absolute inset-0 z-30 flex items-center justify-center">
+        <svg class="w-20 h-20 text-white opacity-90" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- OTHER VIDEOS -->
+  <div class="max-w-7xl mx-auto px-4 mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <!-- VIDEO CARD -->
+    <div class="video-card relative aspect-video rounded-xl overflow-hidden shadow-lg cursor-pointer bg-black"
+         data-video="NJ0WSfUej54">
+      <img src="https://img.youtube.com/vi/NJ0WSfUej54/hqdefault.jpg"
+           class="thumb absolute inset-0 w-full h-full object-cover z-10">
+      <iframe class="preview absolute inset-0 w-full h-full hidden z-20"
+              frameborder="0"
+              allow="autoplay; encrypted-media"></iframe>
+
+      <div class="play-btn absolute inset-0 z-30 flex items-center justify-center">
+        <svg class="w-16 h-16 text-white opacity-90" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="video-card relative aspect-video rounded-xl overflow-hidden shadow-lg cursor-pointer bg-black"
+         data-video="m3Ot4fWaj5U">
+      <img src="https://img.youtube.com/vi/m3Ot4fWaj5U/hqdefault.jpg"
+           class="thumb absolute inset-0 w-full h-full object-cover z-10">
+      <iframe class="preview absolute inset-0 w-full h-full hidden z-20"
+              frameborder="0"
+              allow="autoplay; encrypted-media"></iframe>
+
+      <div class="play-btn absolute inset-0 z-30 flex items-center justify-center">
+        <svg class="w-16 h-16 text-white opacity-90" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="video-card relative aspect-video rounded-xl overflow-hidden shadow-lg cursor-pointer bg-black"
+         data-video="ACX5kBzFHMM">
+      <img src="https://img.youtube.com/vi/ACX5kBzFHMM/hqdefault.jpg"
+           class="thumb absolute inset-0 w-full h-full object-cover z-10">
+      <iframe class="preview absolute inset-0 w-full h-full hidden z-20"
+              frameborder="0"
+              allow="autoplay; encrypted-media"></iframe>
+
+      <div class="play-btn absolute inset-0 z-30 flex items-center justify-center">
+        <svg class="w-16 h-16 text-white opacity-90" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="videoModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+  <div class="relative w-full max-w-5xl mx-4 aspect-video bg-black rounded-xl overflow-hidden">
+
+    <button onclick="closeModal()"
+            class="absolute top-4 right-4 z-10 bg-black/70 text-white
+                   w-10 h-10 flex items-center justify-center rounded-full">
+      ✕
+    </button>
+
+    <iframe id="modalIframe"
+            class="w-full h-full"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen></iframe>
+
+  </div>
+</div>
+
+
+
+<section class="w-full bg-gray-50 py-20 px-4 md:px-12">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 animate__animated animate__fadeIn">
+            <h2 class="text-4xl md:text-5xl font-black text-blue-900 mb-4">Frequently Asked Questions</h2>
+            <p class="text-gray-600">Find answers to common queries about admissions, academics, and life at GEHU.</p>
+        </div>
+
+        <div class="space-y-4">
+            
+            <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md">
+                <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none group" onclick="toggleFAQ(this)">
+                    <span class="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">How can I apply for admission at Graphic Era Hill University?</span>
+                    <span class="transform transition-transform duration-300 text-blue-600 text-2xl">+</span>
+                </button>
+                <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-blue-50/30">
+                    <div class="p-6 text-gray-600 leading-relaxed border-t border-gray-50">
+                        You can apply online through our official admission portal by filling out the application form and uploading required documents. Alternatively, you can visit our campuses in Dehradun, Bhimtal, or Haldwani to apply in person at the counseling desk.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md">
+                <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none group" onclick="toggleFAQ(this)">
+                    <span class="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">What is the GECET Exam and is it mandatory?</span>
+                    <span class="transform transition-transform duration-300 text-blue-600 text-2xl">+</span>
+                </button>
+                <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-blue-50/30">
+                    <div class="p-6 text-gray-600 leading-relaxed border-t border-gray-50">
+                        GECET (Graphic Era Common Entrance Test) is our primary entrance test for various UG and PG programs. While it is mandatory for specific technical courses, it also serves as the gateway to securing merit-based scholarships worth up to 100% of the tuition fee.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md">
+                <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none group" onclick="toggleFAQ(this)">
+                    <span class="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Are there any scholarship schemes for Uttarakhand Domicile students?</span>
+                    <span class="transform transition-transform duration-300 text-blue-600 text-2xl">+</span>
+                </button>
+                <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-blue-50/30">
+                    <div class="p-6 text-gray-600 leading-relaxed border-t border-gray-50">
+                        Yes, GEHU provides a special 25% fee concession on tuition fees for students who are bona fide residents of Uttarakhand. This is in addition to merit-based scholarships earned through GECET or qualifying board exam percentages.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md">
+                <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none group" onclick="toggleFAQ(this)">
+                    <span class="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">What is the placement record of the University?</span>
+                    <span class="transform transition-transform duration-300 text-blue-600 text-2xl">+</span>
+                </button>
+                <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-blue-50/30">
+                    <div class="p-6 text-gray-600 leading-relaxed border-t border-gray-50">
+                        Graphic Era has a stellar placement record with the highest package reaching ₹84.88 LPA. Top recruiters include Amazon, Google, Microsoft, Adobe, and Zscaler. Our dedicated Corporate Resource Cell ensures students receive rigorous training for interviews starting from their third year.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md">
+                <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none group" onclick="toggleFAQ(this)">
+                    <span class="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Does the university provide hostel facilities for outstation students?</span>
+                    <span class="transform transition-transform duration-300 text-blue-600 text-2xl">+</span>
+                </button>
+                <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-blue-50/30">
+                    <div class="p-6 text-gray-600 leading-relaxed border-t border-gray-50">
+                        Absolutely. We offer separate, well-furnished hostels for boys and girls with 24/7 security, high-speed Wi-Fi, and nutritious mess facilities. Hostel seats are allotted on a first-come, first-served basis during the time of admission.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md">
+                <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none group" onclick="toggleFAQ(this)">
+                    <span class="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Can I change my course after the first semester?</span>
+                    <span class="transform transition-transform duration-300 text-blue-600 text-2xl">+</span>
+                </button>
+                <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-blue-50/30">
+                    <div class="p-6 text-gray-600 leading-relaxed border-t border-gray-50">
+                        Course changes are permitted within the same department during the first 15 days of the first semester, subject to seat availability and eligibility criteria. Changes after the first semester are generally not encouraged but may be considered under special university guidelines.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleFAQ(element) {
+    const content = element.nextElementSibling;
+    const icon = element.querySelectorAll('span')[1];
+    
+    // Close all other open FAQs
+    document.querySelectorAll('.max-h-screen').forEach(el => {
+        if (el !== content) {
+            el.style.maxHeight = '0px';
+            el.previousElementSibling.querySelectorAll('span')[1].style.transform = 'rotate(0deg)';
+            el.previousElementSibling.querySelectorAll('span')[1].textContent = '+';
+        }
+    });
+
+    // Toggle current FAQ
+    if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(45deg)';
+        icon.textContent = '+'; // Keep it + but rotate it to look like x
+    } else {
+        content.style.maxHeight = '0px';
+        icon.style.transform = 'rotate(0deg)';
+        icon.textContent = '+';
+    }
+}
+</script>
+
+
+<footer class="bg-[#172554] text-white pt-16">
+
+  <!-- Main Footer Content -->
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+    <!-- University Info -->
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <img src="Images /gehu-logo.svg" alt="GEU Logo" class="h-20">
+      </div>
+      <p class="text-sm text-gray-300 leading-relaxed">
+        566/6, Bell Road, Society Area,<br>
+        Clement Town, Dehradun, Uttarakhand<br>
+        <span class="font-semibold">PIN:</span> 248002
+      </p>
+    </div>
+
+    <!-- Departments Column 1 -->
+    <div>
+      <h4 class="text-yellow-400 font-bold mb-4 uppercase text-sm tracking-wide">
+        Our Departments
+      </h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li>Computer Science and Engineering</li>
+        <li>Electronics and Communication Engineering</li>
+        <li>Biotechnology</li>
+        <li>Electrical Engineering</li>
+        <li>Mechanical Engineering</li>
+        <li>Aerospace Engineering</li>
+      </ul>
+    </div>
+
+    <!-- Departments Column 2 -->
+    <div>
+      <h4 class="text-yellow-400 font-bold mb-4 uppercase text-sm tracking-wide">
+        Our Departments
+      </h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li>Petroleum Engineering and Earth Sciences</li>
+        <li>Management</li>
+        <li>Paramedical Science</li>
+        <li>Humanities and Social Science</li>
+        <li>Biosciences</li>
+        <li>Design</li>
+      </ul>
+    </div>
+
+    <!-- Departments Column 3 -->
+    <div>
+      <h4 class="text-yellow-400 font-bold mb-4 uppercase text-sm tracking-wide">
+        Our Departments
+      </h4>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li>Commerce</li>
+        <li>Hospitality Management</li>
+        <li>Microbiology</li>
+        <li>Food Science and Technology</li>
+        <li>Allied Sciences</li>
+        <li>Nursing</li>
+        <li>Law</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Divider -->
+  <div class="border-t border-blue-900 mt-12"></div>
+
+  <!-- Bottom Bar -->
+  <div class="text-center py-6 text-sm text-gray-400">
+    © 2026 Graphic Era (Deemed to be University). All Rights Reserved.
+  </div>
+
+  <!-- Scroll To Top Button --> 
+  <a
+    href="#"
+    class="fixed bottom-6 right-6 bg-blue-700 text-white p-3 rounded-full shadow-lg
+           hover:bg-blue-800 transition duration-300"
+  >
+    ↑
+  </a> 
+
+</footer>
+    
+</body>
+</html>
