@@ -1,26 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* ================= SLIDER LOGIC ================= */
-  const slides = document.querySelectorAll('.hero-slide');
-  let currentSlide = 0;
-
-  function nextSlide() {
-    slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
-  }
-
-  setInterval(nextSlide, 7000);
-
-  
   const allPrograms = [
+    // --- ENGINEERING & TECH ---
     { title: "B.Tech CSE", level: "UG", campuses: ["Dehradun", "Bhimtal", "Haldwani"], intro: "Full-stack development, AI, and Cloud.", bullets: ["Data Structures", "Cloud Computing", "Web Tech"], about: "Flagship program producing elite software architects. Covers OS, Database, and High-level coding.", eligibility: "10+2 with Physics/Maths" },
-    { title: "MBA Finance", level: "PG", campuses: ["Dehradun", "Bhimtal"], intro: "Master financial markets and strategy.", bullets: ["Investment Banking", "Stock Market", "Taxation"], about: "Theoretical knowledge mixed with practical financial modeling for global certifications.", eligibility: "Graduation (Min 50%)" },
     { title: "B.Tech AI & ML", level: "UG", campuses: ["Dehradun"], intro: "The future of intelligent automation.", bullets: ["Neural Networks", "Python AI", "NLP"], about: "Explore algorithms that allow machines to simulate human intelligence. Build chatbots and predictive engines.", eligibility: "10+2 with PCM" },
-    { title: "Diploma in CS", level: "Diploma", campuses: ["Haldwani", "Bhimtal"], intro: "Fast-track into the IT world.", bullets: ["Basic Programming", "Hardware Basics"], about: "Practical hardware and software troubleshooting skills essential for IT support roles.", eligibility: "10th or 12th Pass" },
-    { title: "MBA HR", level: "PG", campuses: ["Dehradun"], intro: "Lead people and organization.", bullets: ["Talent Acquisition", "Employee Wellness"], about: "Focus on HR analytics and strategic talent management. Develops high-EQ leaders.", eligibility: "Any Graduate" },
-    { title: "BCA Cloud", level: "UG", campuses: ["Dehradun", "Haldwani"], intro: "Infrastructure for the digital age.", bullets: ["AWS/Azure", "Virtualization"], about: "Learn to architect and scale applications on major cloud platforms like AWS and Azure.", eligibility: "10+2 with Maths" },
-    { title: "B.Tech Cyber", level: "UG", campuses: ["Dehradun", "Bhimtal"], intro: "Protect the digital world.", bullets: ["Ethical Hacking", "Cryptography"], about: "Train as a digital defender. Learn ethical hacking to patch system vulnerabilities.", eligibility: "10+2 with PCM" },
-    { title: "MCA (Gen)", level: "PG", campuses: ["Dehradun", "Haldwani"], intro: "Masters in Computer Apps.", bullets: ["Software Eng.", "Java", "DB Management"], about: "Advanced foundation in computer applications. Specializations in Cyber Security or AI.", eligibility: "BCA/B.Sc IT" }
+    { title: "B.Tech Cyber Security", level: "UG", campuses: ["Dehradun", "Bhimtal"], intro: "Protect the digital world from threats.", bullets: ["Ethical Hacking", "Cryptography", "Network Security"], about: "Train as a digital defender. Learn ethical hacking to patch system vulnerabilities and secure networks.", eligibility: "10+2 with PCM" },
+    { title: "B.Tech Data Science", level: "UG", campuses: ["Dehradun"], intro: "Turning big data into big insights.", bullets: ["Big Data Analytics", "Statistics", "Tableau"], about: "Master the art of data interpretation. Use machine learning to solve complex business problems.", eligibility: "10+2 with PCM" },
+    
+    // --- MANAGEMENT ---
+    { title: "MBA Finance", level: "PG", campuses: ["Dehradun", "Bhimtal"], intro: "Master financial markets and strategy.", bullets: ["Investment Banking", "Stock Market", "Taxation"], about: "Theoretical knowledge mixed with practical financial modeling for global certifications.", eligibility: "Graduation (Min 50%)" },
+    { title: "MBA HR", level: "PG", campuses: ["Dehradun"], intro: "Lead people and organization effectively.", bullets: ["Talent Acquisition", "Employee Wellness", "Industrial Law"], about: "Focus on HR analytics and strategic talent management. Develops high-EQ corporate leaders.", eligibility: "Any Graduate" },
+    { title: "BBA Professional", level: "UG", campuses: ["Dehradun", "Haldwani"], intro: "Foundation for future business leaders.", bullets: ["Business Ethics", "Marketing", "Economics"], about: "A comprehensive business degree focusing on entrepreneurship and management principles.", eligibility: "10+2 Any Stream" },
+    
+    // --- COMPUTER APPLICATIONS ---
+    { title: "BCA Cloud Computing", level: "UG", campuses: ["Dehradun", "Haldwani"], intro: "Infrastructure for the digital age.", bullets: ["AWS/Azure", "Virtualization", "DevOps"], about: "Learn to architect and scale applications on major cloud platforms like AWS and Azure.", eligibility: "10+2 with Maths" },
+    { title: "MCA (General)", level: "PG", campuses: ["Dehradun", "Haldwani"], intro: "Advanced masters in computer apps.", bullets: ["Software Eng.", "Advanced Java", "Mobile App Dev"], about: "Deep dive into software development lifecycles and advanced database management systems.", eligibility: "BCA/B.Sc IT" },
+    
+    // --- MEDICAL & HEALTH ---
+    { title: "B.Pharma", level: "UG", campuses: ["Bhimtal"], intro: "Science behind medicine and drugs.", bullets: ["Pharmaceutics", "Pharmacology", "Medicinal Chemistry"], about: "Become a licensed pharmacist. Learn drug manufacturing, testing, and distribution.", eligibility: "10+2 with PCB/PCM" },
+    { title: "B.Sc Nursing", level: "UG", campuses: ["Dehradun"], intro: "Noble profession of healthcare.", bullets: ["Anatomy", "Patient Care", "Medical Ethics"], about: "Professional training for healthcare environments. Focus on clinical skills and patient wellness.", eligibility: "10+2 with PCB" },
+    
+    // --- LAW & HUMANITIES ---
+    { title: "BA LLB (Integrated)", level: "UG", campuses: ["Dehradun"], intro: "5-year combined law program.", bullets: ["Corporate Law", "Criminal Law", "Moot Court"], about: "Integrates arts with legal education. Includes internships under senior advocates and law firms.", eligibility: "10+2 Any Stream (45%)" },
+    { title: "B.Com Honors", level: "UG", campuses: ["Haldwani", "Dehradun"], intro: "Expertise in accounting and trade.", bullets: ["Audit", "Corporate Accounting", "GST"], about: "Prepares students for CA/CS exams with a strong foundation in commerce and accounting.", eligibility: "10+2 Any Stream" },
+    
+    // --- DIPLOMA ---
+    { title: "Diploma in CS", level: "Diploma", campuses: ["Haldwani", "Bhimtal"], intro: "Fast-track into the IT world.", bullets: ["Basic Programming", "Hardware Basics", "IT Tools"], about: "Practical hardware and software troubleshooting skills essential for IT support roles.", eligibility: "10th Pass" },
+    { title: "Diploma in ME", level: "Diploma", campuses: ["Haldwani"], intro: "Mechanical engineering fundamentals.", bullets: ["Workshop Tech", "AutoCAD", "Thermal Eng."], about: "Hands-on training in machine operations, production planning, and mechanical design.", eligibility: "10th Pass" }
   ];
 
   const wrapper = document.getElementById("scrollWrapper");
@@ -37,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let isInteracting = false;
   const CARD_WIDTH = 372; 
 
-  /* ================= AUTO-SCROLL LOGIC ================= */
   function startAutoScroll() {
     stopAutoScroll();
     autoScrollTimer = setInterval(() => {
@@ -60,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function stopAutoScroll() { clearInterval(autoScrollTimer); }
 
-  /* ================= INTERACTION HANDLERS ================= */
   wrapper.addEventListener("mouseenter", () => isInteracting = true);
   wrapper.addEventListener("mouseleave", () => {
     isInteracting = false;
@@ -68,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function attachHandlers() {
-    // Read More Toggle
     document.querySelectorAll(".read-more-btn").forEach(btn => {
       btn.onclick = () => {
         const content = btn.previousElementSibling;
@@ -87,15 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     });
 
-    // Apply Now - Scroll to Top
     document.querySelectorAll(".apply-btn").forEach(btn => {
-      btn.onclick = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      };
+      btn.onclick = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); };
     });
   }
 
-  /* ================= CORE FILTERING ================= */
   function updateGallery() {
     const query = searchInput.value.toLowerCase().trim();
     const filtered = allPrograms.filter(p => {
@@ -104,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const matchesCampus = currentCampus === "all" || p.campuses.includes(currentCampus);
       return matchesSearch && matchesCategory && matchesCampus;
     });
-
     renderCards(filtered, !query && currentCategory === "all" && currentCampus === "all");
   }
 
@@ -112,18 +109,17 @@ document.addEventListener("DOMContentLoaded", () => {
     track.innerHTML = "";
     scrollIndex = 0;
     track.style.transform = "translateX(0)";
-
     const list = loop ? [...data, ...data] : data;
 
     if (list.length === 0) {
-        track.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400 font-medium">No programs found for these filters.</div>`;
+        track.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400 font-medium w-full">No programs found for these filters.</div>`;
         stopAutoScroll();
         return;
     }
 
     list.forEach((p) => {
       const card = document.createElement("div");
-      card.className = "bg-white rounded-2xl p-6 flex flex-col shadow-md border border-gray-100 h-fit w-[340px] hover:shadow-xl transition-all";
+      card.className = "program-card bg-white rounded-2xl p-6 flex flex-col border border-gray-100 h-fit w-[340px] shadow-sm";
       card.innerHTML = `
         <div class="flex justify-between items-start mb-2">
           <h3 class="text-xl font-bold text-blue-900">${p.title}</h3>
@@ -138,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="course-content space-y-3">
           <p class="text-[13px] text-gray-700 leading-relaxed">${p.about}</p>
           <div class="bg-blue-50 p-3 rounded text-[11px] font-medium"><span class="text-blue-800 font-bold">ELIGIBILITY:</span> ${p.eligibility}</div>
-          <button class="apply-btn w-full py-3 rounded-xl text-white text-xs font-bold bg-gradient-to-r from-blue-600 to-yellow-400 shadow-md hover:scale-[1.02] transition-transform">Apply Now</button>
+          <button class="apply-btn w-full py-3 rounded-xl text-white text-xs font-bold bg-gradient-to-r from-blue-600 to-yellow-400 shadow-md">Apply Now</button>
         </div>
         <button class="mt-4 text-blue-600 text-[11px] font-bold self-start read-more-btn">READ DETAILS ▼</button>
       `;
@@ -149,7 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loop) startAutoScroll(); else stopAutoScroll();
   }
 
-  /* ================= FILTER CONTROLS ================= */
   function populateCampusDropdown() {
     let camps = new Set();
     allPrograms.forEach(p => {
@@ -157,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
         p.campuses.forEach(c => camps.add(c));
       }
     });
-
     campusDropdown.innerHTML = `<option value="all">All Campuses</option>`;
     camps.forEach(c => {
       const opt = document.createElement("option");
@@ -165,27 +159,19 @@ document.addEventListener("DOMContentLoaded", () => {
       opt.textContent = `GEHU ${c}`;
       campusDropdown.appendChild(opt);
     });
-    
     campusDropdown.value = Array.from(camps).includes(currentCampus) ? currentCampus : "all";
   }
 
-  campusDropdown.onchange = (e) => {
-    currentCampus = e.target.value;
-    updateGallery();
-  };
+  campusDropdown.onchange = (e) => { currentCampus = e.target.value; updateGallery(); };
 
   filterBtns.forEach(btn => {
     btn.onclick = () => {
-      // Remove active state from all
       filterBtns.forEach(b => {
         b.classList.remove("active", "text-white", "border-transparent");
         b.classList.add("text-gray-600", "border-gray-200");
       });
-
-      // Add active state to clicked
       btn.classList.add("active", "text-white", "border-transparent");
       btn.classList.remove("text-gray-600", "border-gray-200");
-      
       currentCategory = btn.dataset.category;
       populateCampusDropdown();
       updateGallery();
@@ -194,23 +180,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   clearBtn.onclick = () => {
     searchInput.value = "";
-    currentCategory = "all";
-    currentCampus = "all";
+    currentCategory = "all"; currentCampus = "all";
     filterBtns.forEach(b => {
-        b.classList.remove("active", "text-white", "border-transparent");
-        b.classList.add("text-gray-600", "border-gray-200");
-        if(b.dataset.category === "all") {
-            b.classList.add("active", "text-white", "border-transparent");
-            b.classList.remove("text-gray-600", "border-gray-200");
-        }
+      b.classList.remove("active", "text-white", "border-transparent");
+      b.classList.add("text-gray-600", "border-gray-200");
+      if(b.dataset.category === "all") b.classList.add("active");
     });
-    populateCampusDropdown();
-    updateGallery();
+    populateCampusDropdown(); updateGallery();
   }
 
   searchInput.oninput = updateGallery;
-  
-  // Initialize
   populateCampusDropdown();
   updateGallery();
 });
