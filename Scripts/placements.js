@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     counters.forEach(counter => {
       const target = parseFloat(counter.getAttribute('data-target'));
       const decimals = parseInt(counter.getAttribute('data-decimals')) || 0;
-      const duration = 2500; // Total time 2.5s for a more elegant feel
+      const duration = 2500; 
       const startTime = performance.now();
 
       const update = (now) => {
@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (progress < 1) {
           requestAnimationFrame(update);
         } else {
+          // Final value ensures exact decimal precision
           counter.innerText = target.toFixed(decimals);
         }
       };
@@ -36,12 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Adding a slight delay before start for visual impact
         setTimeout(startCounters, 200);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.25 });
+  }, { threshold: 0.15 }); // Trigger slightly earlier on mobile for better UX
 
   if (statsSection) {
     observer.observe(statsSection);
