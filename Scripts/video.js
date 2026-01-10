@@ -1,4 +1,4 @@
-<script>
+
   let previewTimer;
 
   document.querySelectorAll('.video-card').forEach(card => {
@@ -49,4 +49,4 @@
     modal.classList.add('hidden');
     modal.classList.remove('flex');
   }
-</script>
+
