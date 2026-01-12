@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById('highlightsContainer');
     if (!container) return;
 
-    // Render Cards
+    // Direct injection - no waiting for scroll
     container.innerHTML = highlightsData.map((item, index) => `
         <div class="swiper-slide !h-auto">
             <div class="highlight-card rounded-[2rem] overflow-hidden flex flex-col h-full">
@@ -42,12 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 
                 <div class="p-8 flex-grow flex flex-col">
-                    <h3 class="text-2xl font-bold text-white mb-4 leading-tight">${item.title}</h3>
-                    <p id="desc-${item.id}" class="description-text clamped text-slate-400 text-sm leading-relaxed mb-6">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4 leading-tight">${item.title}</h3>
+                    <p id="desc-${item.id}" class="description-text clamped text-slate-500 text-sm leading-relaxed mb-6">
                         ${item.text}
                     </p>
                     <div class="mt-auto">
-                        <button onclick="toggleHighlight(event, '${item.id}')" class="read-more-btn group text-yellow-400 font-bold text-sm flex items-center gap-2 transition-all">
+                        <button onclick="toggleHighlight(event, '${item.id}')" class="read-more-btn group text-blue-600 font-bold text-sm flex items-center gap-2 transition-all">
                             <span id="label-${item.id}">READ MORE</span>
                             <svg id="icon-${item.id}" class="arrow-icon w-4 h-4 transform transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path id="path-${item.id}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -59,53 +59,35 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     `).join('');
 
-    // Initialize Swiper with Fixed Autoplay
+    // Initialize Swiper immediately
     const swiper = new Swiper(".highlightsSwiper", {
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
-        centeredSlides: false,
-        speed: 800,
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false, // Keeps auto-scroll working after user clicks
-            pauseOnMouseEnter: true,    // Good for UX: pauses when user reads
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
+        autoplay: { delay: 4000, disableOnInteraction: false },
+        pagination: { el: ".swiper-pagination", clickable: true },
         breakpoints: {
-            768: {
-                slidesPerView: 2,
-            },
-            1024: {
-                slidesPerView: 3,
-            }
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
         }
     });
 
-    // Toggle logic remains the same
+    // Read More Toggle
     window.toggleHighlight = (event, id) => {
         event.stopPropagation();
         const textElement = document.getElementById(`desc-${id}`);
         const label = document.getElementById(`label-${id}`);
-        const iconPath = document.getElementById(`path-${id}`);
         const iconContainer = document.getElementById(`icon-${id}`);
 
         if (textElement.classList.contains('clamped')) {
             textElement.classList.remove('clamped');
             label.innerText = 'READ LESS';
             iconContainer.style.transform = 'rotate(-180deg)';
-            iconPath.setAttribute('d', 'M5 15l7-7 7 7');
         } else {
             textElement.classList.add('clamped');
             label.innerText = 'READ MORE';
             iconContainer.style.transform = 'rotate(0deg)';
-            iconPath.setAttribute('d', 'M14 5l7 7m0 0l-7 7m7-7H3');
         }
-        
-        // Let swiper adjust to new height
         setTimeout(() => swiper.update(), 200);
     };
 });
