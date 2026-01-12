@@ -1,64 +1,107 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* ================= DATA ================= */
-  const stateCityMap = {
-    "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur"],
-    "Arunachal Pradesh": ["Itanagar"],
-    "Assam": ["Guwahati", "Silchar"],
-    "Bihar": ["Patna", "Gaya"],
-    "Chhattisgarh": ["Raipur", "Bilaspur"],
-    "Goa": ["Panaji", "Margao"],
-    "Gujarat": ["Ahmedabad", "Surat", "Vadodara"],
-    "Haryana": ["Gurgaon", "Faridabad"],
-    "Himachal Pradesh": ["Shimla", "Solan"],
-    "Jharkhand": ["Ranchi", "Jamshedpur"],
-    "Karnataka": ["Bengaluru", "Mysuru", "Mangaluru"],
-    "Kerala": ["Kochi", "Trivandrum", "Calicut"],
-    "Madhya Pradesh": ["Bhopal", "Indore"],
-    "Maharashtra": ["Mumbai", "Pune", "Nagpur"],
-    "Manipur": ["Imphal"],
-    "Meghalaya": ["Shillong"],
-    "Mizoram": ["Aizawl"],
-    "Nagaland": ["Kohima"],
-    "Odisha": ["Bhubaneswar", "Cuttack"],
-    "Punjab": ["Chandigarh", "Ludhiana"],
-    "Rajasthan": ["Jaipur", "Udaipur"],
-    "Sikkim": ["Gangtok"],
-    "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai"],
-    "Telangana": ["Hyderabad", "Warangal"],
-    "Tripura": ["Agartala"],
-    "Uttar Pradesh": ["Noida", "Lucknow", "Kanpur"],
-    "Uttarakhand": ["Dehradun", "Haridwar"],
-    "West Bengal": ["Kolkata", "Durgapur"],
-    "Delhi": ["New Delhi", "Dwarka", "Saket"],
-    "Jammu & Kashmir": ["Srinagar", "Jammu"],
-    "Ladakh": ["Leh"],
-    "Puducherry": ["Puducherry"],
-    "Chandigarh": ["Chandigarh"],
-    "Andaman & Nicobar": ["Port Blair"],
-    "Dadra & Nagar Haveli": ["Silvassa"],
-    "Lakshadweep": ["Kavaratti"]
-  };
+const stateCityMap = {
+  "Andaman & Nicobar": ["Port Blair", "South Andaman", "North and Middle Andaman", "Nicobar"],
+  "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Kurnool", "Kakinada", "Tirupati", "Anantapur", "Kadapa", "Eluru"],
+  "Arunachal Pradesh": ["Itanagar", "Tawang", "Ziro", "Pasighat", "Roing", "Tezu", "Bomdila"],
+  "Assam": ["Guwahati", "Silchar", "Dibrugarh", "Jorhat", "Nagaon", "Tinsukia", "Tezpur", "Bongaigaon"],
+  "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Darbhanga", "Arrah", "Begusarai", "Katihar"],
+  "Chandigarh": ["Chandigarh"],
+  "Chhattisgarh": ["Raipur", "Bhilai", "Bilaspur", "Korba", "Rajnandgaon", "Jagdalpur", "Ambikapur"],
+  "Dadra & Nagar Haveli and Daman & Diu": ["Silvassa", "Daman", "Diu"],
+  "Delhi": ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Dwarka", "Saket", "Rohini"],
+  "Goa": ["Panaji", "Margao", "Vasco da Gama", "Mapusa", "Ponda"],
+  "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar", "Junagadh", "Anand", "Navsari"],
+  "Haryana": ["Gurgaon", "Faridabad", "Panipat", "Ambala", "Yamunanagar", "Rohtak", "Hisar", "Karnal", "Sonipat"],
+  "Himachal Pradesh": ["Shimla", "Dharamshala", "Solan", "Mandi", "Kullu", "Chamba", "Hamirpur", "Una"],
+  "Jammu & Kashmir": ["Srinagar", "Jammu", "Anantnag", "Baramulla", "Kathua", "Udhampur", "Samba", "Pulwama"],
+  "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Deoghar", "Hazaribagh", "Giridih", "Ramgarh"],
+  "Karnataka": ["Bengaluru", "Mysuru", "Hubli-Dharwad", "Mangaluru", "Belagavi", "Kalaburagi", "Davanagere", "Ballari", "Vijayapura", "Shivamogga"],
+  "Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur", "Kollam", "Alappuzha", "Palakkad", "Malappuram", "Kannur", "Kottayam"],
+  "Ladakh": ["Leh", "Kargil"],
+  "Lakshadweep": ["Kavaratti", "Agatti", "Amini", "Andrott", "Minicoy"],
+  "Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur", "Gwalior", "Ujjain", "Sagar", "Dewas", "Satna", "Ratlam", "Rewa"],
+  "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Aurangabad", "Solapur", "Amravati", "Navi Mumbai", "Kolhapur", "Akola"],
+  "Manipur": ["Imphal", "Thoubal", "Bishnupur", "Churachandpur", "Ukhrul", "Senapati"],
+  "Meghalaya": ["Shillong", "Tura", "Jowai", "Nongpoh", "Williamnagar"],
+  "Mizoram": ["Aizawl", "Lunglei", "Saiha", "Champhai", "Kolasib"],
+  "Nagaland": ["Kohima", "Dimapur", "Mokokchung", "Tuensang", "Wokha", "Mon"],
+  "Odisha": ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Sambalpur", "Puri", "Balasore", "Bhadrak", "Baripada"],
+  "Puducherry": ["Puducherry", "Karaikal", "Mahe", "Yanam"],
+  "Punjab": ["Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Bathinda", "Mohali", "Hoshiarpur", "Pathankot", "Moga"],
+  "Rajasthan": ["Jaipur", "Jodhpur", "Kota", "Bikaner", "Ajmer", "Udaipur", "Bhilwara", "Alwar", "Sikar", "Pali"],
+  "Sikkim": ["Gangtok", "Namchi", "Geyzing", "Mangan"],
+  "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Tiruppur", "Erode", "Vellore", "Thoothukudi", "Tirunelveli"],
+  "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Khammam", "Karimnagar", "Ramagundam", "Mahabubnagar", "Nalgonda"],
+  "Tripura": ["Agartala", "Dharmanagar", "Udaipur", "Kailasahar", "Ambassa"],
+  "Uttar Pradesh": ["Lucknow", "Kanpur", "Ghaziabad", "Agra", "Meerut", "Varanasi", "Prayagraj", "Bareilly", "Aligarh", "Noida", "Moradabad", "Gorakhpur"],
+  "Uttarakhand": ["Dehradun", "Haridwar", "Haldwani", "Roorkee", "Rudrapur", "Kashipur", "Rishikesh"],
+  "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri", "Maheshtala", "Rajpur Sonarpur", "Gopalpur", "Bhatpara", "Kharagpur"]
+};
+const courseList = [
+  // --- School of Engineering & Technology ---
+  "B.Tech - Computer Science & Engineering",
+  "B.Tech - CSE (Hons) with AI & Machine Learning",
+  "B.Tech - CSE (Hons) with Cloud Computing",
+  "B.Tech - CSE (Hons) with Cyber Security",
+  "B.Tech - CSE (Hons) with Data Science",
+  "B.Tech - Electronics & Communication Engineering",
+  "B.Tech - ECE (Hons) with Drone Technology",
+  "B.Tech - ECE (Hons) with VLSI Design",
+  "B.Tech - Mechanical Engineering",
+  "B.Tech - Mechanical (Hons) with Robotics & Automation",
+  "B.Tech - Civil Engineering",
+  "B.Tech - Civil (Hons) with Smart Infrastructure",
 
-  const courseList = [
-    "B.Tech - Computer Science & Engg.",
-    "B.Tech - AI & Data Science",
-    "B.Tech - Electronics & Communication",
-    "B.Tech - Mechanical Engineering",
-    "B.Tech - Biotechnology",
-    "MBA - Business Analytics",
-    "MBA - Finance & Banking",
-    "MBA - Marketing & Sales",
-    "MBA - HR Management",
-    "MBA - International Business",
-    "BBA - Digital Marketing",
-    "BCA - Cloud Computing",
-    "B.Des - Fashion Design",
-    "B.Des - UI/UX Design",
-    "B.Com (Hons) - International Finance",
-    "M.Tech - Cyber Security",
-    "M.Sc - Data Science",
-    "Ph.D - Research Programs"
-  ];
+  // --- School of Management & Commerce ---
+  "MBA - Marketing / Finance / HR Management",
+  "MBA - Business Analytics & AI",
+  "MBA - Logistics & Supply Chain Management",
+  "MBA - Agri-Business Management",
+  "BBA - General / International Business",
+  "BBA - Digital Marketing Specialization",
+  "BBA - Airport & Airline Management",
+  "B.Com (Hons) - International Finance & Accounting (ACCA UK)",
+  "B.Com (Hons) - Corporate Accounting (CMA US)",
+  "M.Com - Finance & Taxation",
+
+  // --- School of Computer Applications ---
+  "BCA - Industry Integrated",
+  "BCA (Hons) - Cyber Security / AI & Data Science",
+  "B.Sc - Information Technology (IT)",
+  "MCA - Master of Computer Applications",
+  "MCA - Specialization in AI & Data Science",
+
+  // --- School of Design, Media & Arts ---
+  "B.Des - Fashion Design",
+  "B.Des - User Experience (UX) & Interaction Design",
+  "B.Des - Animation & Gaming",
+  "B.Sc - Animation & Gaming",
+  "BA - Journalism & Mass Communication (BJMC)",
+  "MA - Journalism & Mass Communication (MAJMC)",
+  "Bachelor of Visual Arts (BVA / Fine Arts)",
+
+  // --- School of Law ---
+  "BA LLB (Integrated 5-Year Program)",
+  "BBA LLB (Integrated 5-Year Program)",
+  "LLM - Master of Laws",
+
+  // --- Agriculture, Pharmacy & Science ---
+  "B.Sc (Hons) - Agriculture",
+  "B.Pharma - Bachelor of Pharmacy",
+  "D.Pharma - Diploma in Pharmacy",
+  "M.Sc - Mathematics / Physics / Chemistry",
+  "B.Sc (Hons) - Physics / Maths / Chemistry",
+
+  // --- Polytechnic / Diploma ---
+  "Diploma - Computer Science Engineering",
+  "Diploma - Mechanical / Civil / Electrical Engineering",
+
+  // --- Doctoral Programs ---
+  "Ph.D - Computer Science & Engineering",
+  "Ph.D - Management / Commerce",
+  "Ph.D - Physics / Chemistry / Humanities"
+];
 
   const form = document.getElementById("leadForm");
   const phoneInput = document.getElementById("phone");
